@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include <ctime>
+#include <algorithm>
 #include "Book.h"
 
 static int currentYear() {
@@ -41,4 +42,9 @@ const std::vector<std::string>& Book::getAuthors() const
 int Book::getPublicationYear() const 
 {
     return publicationYear_;
+}
+
+bool Book::check_authorship(const std::string& author) const
+{
+    return std::ranges::find(authors_, author) != authors_.end();
 }
