@@ -48,3 +48,8 @@ bool Book::check_authorship(const std::string& author) const
 {
     return std::ranges::find(authors_, author) != authors_.end();
 }
+
+std::string Book::getDescription() const 
+{
+    return title_ + " (" + std::to_string(publicationYear_) + ")";
+}

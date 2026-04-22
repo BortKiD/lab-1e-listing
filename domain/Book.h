@@ -16,6 +16,7 @@ public:
     const std::vector<std::string>& getAuthors() const;
     int getPublicationYear() const;
     bool check_authorship(const std::string& author) const;
+    virtual std::string getDescription() const;
 private:
     std::string title_;
     ISBN isbn_;
