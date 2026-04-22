@@ -29,8 +29,6 @@ set(INFRASTRUCTURE_SOURCES
 set(PRESENTATION_SOURCES
     Presentation/BorrowController.hpp
     Presentation/ReturnController.hpp
-    Presentation/UserController.hpp
-    Presentation/AdminController.hpp
 )
 
 set(ALL_SOURCES
