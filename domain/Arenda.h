@@ -20,10 +20,13 @@ public:
     std::shared_ptr<Person> getPerson() const;
     std::shared_ptr<Copy> getCopy() const;
     bool isActive() const;
+    std::chrono::system_clock::time_point getEndDate() const;
+    void close();
 
 private:
     std::shared_ptr<Person> person_;
     std::shared_ptr<Copy> copy_;
     std::chrono::system_clock::time_point startDate_;
+    std::chrono::system_clock::time_point endDate_;
     ArendaStatus status_;
 };
