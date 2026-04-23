@@ -1,6 +1,7 @@
 #include "Person.h"
 #include <stdexcept>
 #include <utility>
+#include <algorithm>
 
 Person::Person(int id, 
     std::string fullName, 
@@ -35,10 +36,11 @@ void Person::addRole(std::shared_ptr<Role> role)
 
 bool Person::hasRole(const std::string& roleName) const
 {
-    for (const auto& role : roles_) 
-        if (role->getName() == roleName) 
-            return true;
-    return false;
+    // for (const auto& role : roles_) 
+    //     if (role->getName() == roleName) 
+    //         return true;
+    // return false;
+    return std::ranges::find(roles_, roleName, &Role::getName) != roles_.end();
 }
 
 void Person::changeEmail(const std::string& newEmail) 
