@@ -15,6 +15,8 @@ Arenda::Arenda(
 {
     if (!person_) 
         throw std::invalid_argument("Person cannot be null!");
+    if (!person_->canTakeBooks())
+        throw std::logic_error("This person cannot take books");
     if (!copy_) 
         throw std::invalid_argument("Copy cannot be null!");
 }
