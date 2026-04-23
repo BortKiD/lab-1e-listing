@@ -24,7 +24,7 @@ const std::string& Person::getFullName() const
     return fullName_;
 }
 
-const std::string& Person::getEmail() const 
+const Email& Person::getEmail() const 
 {
     return email_;
 }
@@ -43,11 +43,9 @@ bool Person::hasRole(const std::string& roleName) const
     return std::ranges::find(roles_, roleName, &Role::getName) != roles_.end();
 }
 
-void Person::changeEmail(const std::string& newEmail) 
+void Person::changeEmail(Email& newEmail) 
 {
-    if (newEmail.empty())
-        throw std::invalid_argument("Email cannot be empty");
-    email_ = newEmail;
+    email_ = std::move(newEmail);
 }
 
 bool Person::canTakeBooks() const
