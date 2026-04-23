@@ -2,8 +2,16 @@
 #include <memory>
 #include <chrono>
 
+enum ArendaStatus
+{
+    Active,
+    Closed
+};
+
 class Person;
+
 class Copy;
+
 class Arenda 
 {
 public:
@@ -11,9 +19,11 @@ public:
            std::shared_ptr<Copy> copy);
     std::shared_ptr<Person> getPerson() const;
     std::shared_ptr<Copy> getCopy() const;
+    bool isActive() const;
 
 private:
     std::shared_ptr<Person> person_;
     std::shared_ptr<Copy> copy_;
     std::chrono::system_clock::time_point startDate_;
+    ArendaStatus status_;
 };

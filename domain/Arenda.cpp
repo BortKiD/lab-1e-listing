@@ -9,7 +9,8 @@ Arenda::Arenda(
     :
     person_(person),
     copy_(copy),
-    startDate_(std::chrono::system_clock::now())
+    startDate_(std::chrono::system_clock::now()),
+    status_(ArendaStatus::Active)
 {
     if (!person_) 
         throw std::invalid_argument("Person cannot be null!");
@@ -25,4 +26,9 @@ std::shared_ptr<Person> Arenda::getPerson() const
 std::shared_ptr<Copy> Arenda::getCopy() const
 {    
     return copy_;
+}
+
+bool Arenda::isActive() const
+{
+    return status_ == ArendaStatus::Active;
 }
