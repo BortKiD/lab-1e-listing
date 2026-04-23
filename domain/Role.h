@@ -40,3 +40,12 @@ public:
         return "Admin";
     }
 };
+
+class GuestRole : public Role 
+{
+public:
+    std::string getName() const override 
+    {
+        return "Guest";
+    }
+};
