@@ -13,12 +13,15 @@ Arenda::Arenda(
     startDate_(std::chrono::system_clock::now()),
     status_(ArendaStatus::Active)
 {
-    if (!person_) 
+    if (!person_)
         throw std::invalid_argument("Person cannot be null!");
     if (!person_->canTakeBooks())
-        throw std::logic_error("This person cannot take books");
+        throw std::logic_error("This person cannot take books!");
     if (!copy_) 
         throw std::invalid_argument("Copy cannot be null!");
+    if (!copy_->isAvailable())
+        throw std::invalid_argument("Copy is already borrowed!");
+    copy_->markAsBorrowed();
 }
 
 std::shared_ptr<Person> Arenda::getPerson() const 
@@ -49,4 +52,5 @@ void Arenda::close()
     }
     status_ = ArendaStatus::Closed;
     endDate_ = std::chrono::system_clock::now();
+    copy_->markAsReturned();
 }

@@ -41,7 +41,9 @@ add_executable(LibrarySystem ${ALL_SOURCES}
     domain/Ebook.h
     domain/Pbook.h
     domain/Pbook.cpp
-    domain/Email.h)
+    domain/Email.h
+    domain/Copy.h
+    domain/Copy.cpp)
 
 target_include_directories(LibrarySystem PRIVATE
     domain
