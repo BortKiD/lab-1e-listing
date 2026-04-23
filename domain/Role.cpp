@@ -1,3 +1,6 @@
 #include "Role.h"
 
-// Abstract class
+bool Role::canTakeBooks() const
+{
+    return false;
+}

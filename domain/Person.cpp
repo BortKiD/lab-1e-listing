@@ -49,3 +49,8 @@ void Person::changeEmail(const std::string& newEmail)
         throw std::invalid_argument("Email cannot be empty");
     email_ = newEmail;
 }
+
+bool Person::canTakeBooks() const
+{
+    return std::ranges::find(roles_, true, &Role::canTakeBooks) != roles_.end();
+}
