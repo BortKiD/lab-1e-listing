@@ -5,11 +5,11 @@
 
 static int currentYear() {
     std::time_t t = std::time(nullptr);
-    std::tm* now = new std::tm();
-    errno_t err = localtime_s(now, &t);
+    std::tm now;
+    errno_t err = localtime_s(&now, &t);
     if (err) 
         throw std::runtime_error("Unable to evaluate current date");
-    return now->tm_year + 1900;
+    return now.tm_year + 1900;
 }
 
 Book::Book(std::string title, ISBN isbn,

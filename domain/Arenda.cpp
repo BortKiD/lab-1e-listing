@@ -54,3 +54,15 @@ void Arenda::close()
     endDate_ = std::chrono::system_clock::now();
     copy_->markAsReturned();
 }
+
+bool Arenda::isOverdue() const {
+    bool res;
+    if (status_ == ArendaStatus::Closed) { res = false; }
+    else 
+    {
+        auto now = std::chrono::system_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::hours>(now - startDate_);
+        res = duration.count() > 24 * DefaultArendaDays;
+    }
+    return res;
+}

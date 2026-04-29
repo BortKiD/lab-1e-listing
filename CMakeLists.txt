@@ -8,12 +8,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(DOMAIN_SOURCES
     domain/Book.h
     domain/Book.cpp
+    domain/isbn.h
+    domain/isbn.cpp
     domain/Arenda.h
     domain/Arenda.cpp
     domain/Person.h
     domain/Person.cpp
     domain/Role.h
     domain/Role.cpp
+    domain/Ebook.h
+    domain/Ebook.cpp
+    domain/Pbook.h
+    domain/Pbook.cpp
+    domain/Email.h
+    domain/Email.cpp
+    domain/Copy.h
+    domain/Copy.cpp
 )
 
 set(APPLICATION_SOURCES
@@ -37,13 +47,7 @@ set(ALL_SOURCES
     main.cpp
 )
 
-add_executable(LibrarySystem ${ALL_SOURCES}
-    domain/Ebook.h
-    domain/Pbook.h
-    domain/Pbook.cpp
-    domain/Email.h
-    domain/Copy.h
-    domain/Copy.cpp)
+add_executable(LibrarySystem ${ALL_SOURCES})
 
 target_include_directories(LibrarySystem PRIVATE
     domain

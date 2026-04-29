@@ -4,14 +4,14 @@
 
 static bool validateEmail(std::string value)
 {
-    const std::regex pattern("[a-z0-9]+@[a-z]+\.[a-z]{2,3}");
+    const std::regex pattern(R"([a-z0-9]+@[a-z]+\.[a-z]{2,3})");
     return std::regex_match(value, pattern);
 }
 
 Email::Email(std::string value) 
 : value_(std::move(value))
 {
-    if (validateEmail(value))
+    if (!validateEmail(value))
         throw std::invalid_argument("Invalid email!");
 }
 
