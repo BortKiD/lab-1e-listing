@@ -1,6 +1,7 @@
 #include <memory>
 #include <iostream>
 #include "application/ArendaService.h"
+#include "application/policy/ArendaPolicy.h"
 #include "infrastructure/InMemoryArendaRepository.h"
 #include "domain/Email.h"
 #include "domain/Person.h"
@@ -11,7 +12,8 @@
 
 int main() {
     auto repository = std::make_shared<InMemoryArendaRepository>();
-    ArendaService service(repository);
+    auto policy = std::make_shared<DefaultArendaPolicy>();
+    ArendaService service(repository, policy);
     Email email("shepard@example.com");
     auto person = std::make_shared<Person>(1, 
         "John Shepard", 

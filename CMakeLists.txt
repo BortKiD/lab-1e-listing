@@ -31,6 +31,8 @@ set(APPLICATION_SOURCES
     application/ArendaService.cpp
     application/CatalogService.h
     application/CatalogService.cpp
+    application/policy/ArendaPolicy.h
+    application/policy/ArendaPolicy.cpp
 )
 
 set(INFRASTRUCTURE_SOURCES
