@@ -20,12 +20,8 @@ Arenda::Arenda(
         throw std::logic_error("This person cannot take books!");
     if (!copy_) 
         throw std::invalid_argument("Copy cannot be null!");
-    if (!copy_->isAvailable())
-        throw std::invalid_argument("Copy is already borrowed!");
     
     dueDate_ = startDate_ + std::chrono::hours(24 * days);
-
-    copy_->markAsBorrowed();
 }
 
 std::shared_ptr<Person> Arenda::getPerson() const 
