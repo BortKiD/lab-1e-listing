@@ -13,7 +13,7 @@ std::shared_ptr<Arenda> ArendaService::createArenda(
     std::shared_ptr<Copy> copy) 
 {
     if (hasOverdueArendas(person->getId()))
-        throw std::logic_error("User has overduebook/books!");
+        throw std::logic_error("User has overdue book/books!");
     auto arenda = std::make_shared<Arenda>(person, copy);
     repository_->save(arenda);
     return arenda;
@@ -22,7 +22,7 @@ std::shared_ptr<Arenda> ArendaService::createArenda(
 void ArendaService::closeArenda(std::shared_ptr<Arenda> arenda)
 {
     if (!arenda)
-        throw std::invalid_argument("Arenda isnull!");
+        throw std::invalid_argument("Arenda is null!");
     arenda->close();
 }
 

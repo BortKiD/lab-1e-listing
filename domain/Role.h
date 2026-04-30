@@ -8,7 +8,7 @@ public:
     virtual std::string getName() const = 0;
     virtual bool canTakeBooks() const;
     virtual int getDefaultArendaDays() const = 0;
-    virtual int getMaxActiveArendas() const;
+    virtual int getMaxActiveArendas() const = 0;
 };
 
 class ReaderRole : public Role 

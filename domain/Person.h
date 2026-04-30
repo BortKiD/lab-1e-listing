@@ -8,7 +8,7 @@
 class Person 
 {
 public:
-    explicit Person(int id, std::string fullName, std::string email);
+    explicit Person(int id, std::string fullName, Email email);
 
     int getId() const;
     const std::string& getFullName() const;

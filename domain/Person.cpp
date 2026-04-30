@@ -5,7 +5,7 @@
 
 Person::Person(int id, 
     std::string fullName, 
-    std::string email) : 
+    Email email) : 
     id_(id), 
     fullName_(std::move(fullName)),
     email_(std::move(email))
