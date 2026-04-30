@@ -20,8 +20,6 @@ public:
     bool canTakeBooks() const;
     int getMaxArendaDays() const;
     int getMaxActiveArendas() const;
-    void addArenda(std::shared_ptr<Arenda> arenda);
-    bool hasOverdueArendas() const;
 
 private:
     int id_;
