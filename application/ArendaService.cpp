@@ -24,8 +24,9 @@ std::shared_ptr<Arenda> ArendaService::createArenda(
         throw std::logic_error("User has overdue book/books!");
 
     auto active = repository_->findActiveByPerson(person->getId());
+    auto overdue = repository_->findOverdueByPerson(person->getId());
     if (!policy_) throw std::logic_error("ArendaPolicy is not set");
-    if (!policy_->canCreateArenda(*person, *copy, active))
+    if (!policy_->canCreateArenda(*person, *copy, active, overdue))
         throw std::logic_error("Can't issue book");
 
     auto arenda = std::make_shared<Arenda>(person, copy);
