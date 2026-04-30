@@ -76,3 +76,11 @@ int Person::getMaxActiveArendas() const {
     }
     return maxA;
 }
+
+void Person::addArenda(std::shared_ptr<Arenda> arenda) {
+    arendas_.push_back(arenda);
+}
+
+bool Person::hasOverdueArendas() const {
+    return std::ranges::find(arendas_, true, &Arenda::isOverdue) != arendas_.end();
+}

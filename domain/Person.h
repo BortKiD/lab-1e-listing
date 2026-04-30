@@ -3,6 +3,7 @@
 #include <memory>
 #include "Role.h"
 #include "Email.h"
+#include "Arenda.h"
 
 class Person 
 {
@@ -19,10 +20,13 @@ public:
     bool canTakeBooks() const;
     int getMaxArendaDays() const;
     int getMaxActiveArendas() const;
+    void addArenda(std::shared_ptr<Arenda> arenda);
+    bool hasOverdueArendas() const;
 
 private:
     int id_;
     std::string fullName_;
     Email email_;
     std::vector<std::shared_ptr<Role>> roles_;
+    std::vector<std::shared_ptr<Arenda>> arendas_;
 };
