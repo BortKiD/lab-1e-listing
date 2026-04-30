@@ -14,6 +14,11 @@ std::shared_ptr<Arenda> ArendaService::createArenda(
 {
     if (hasOverdueArendas(person->getId()))
         throw std::logic_error("User has overdue book/books!");
+
+    auto active = repository_->findActiveByPerson(person->getId());
+    if (active.size() >= (long long unsigned int)person->getMaxActiveArendas())
+        throw std::logic_error("Arenda's Limit exceeded!");
+    
     auto arenda = std::make_shared<Arenda>(person, copy);
     repository_->save(arenda);
     return arenda;
