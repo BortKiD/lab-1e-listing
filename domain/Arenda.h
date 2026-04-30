@@ -25,10 +25,10 @@ public:
     void close();
 
 private:
-    static constexpr int DefaultArendaDays = 30;
     std::shared_ptr<Person> person_;
     std::shared_ptr<Copy> copy_;
     std::chrono::system_clock::time_point startDate_;
+    std::chrono::system_clock::time_point dueDate_;
     std::chrono::system_clock::time_point endDate_;
     ArendaStatus status_;
 };

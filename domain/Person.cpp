@@ -52,3 +52,15 @@ bool Person::canTakeBooks() const
 {
     return std::ranges::find(roles_, true, &Role::canTakeBooks) != roles_.end();
 }
+
+int Person::getMaxArendaDays() const {
+    int maxDays = 0;
+    for (const auto& role : roles_) 
+    {
+        if (role->canTakeBooks()) 
+        {
+            maxDays = std::max(maxDays, role->getDefaultArendaDays());
+        }
+    }
+    return maxDays;
+}

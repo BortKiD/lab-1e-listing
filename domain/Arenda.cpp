@@ -15,12 +15,16 @@ Arenda::Arenda(
 {
     if (!person_)
         throw std::invalid_argument("Person cannot be null!");
-    if (!person_->canTakeBooks())
+    int days = person->getMaxArendaDays();
+    if (!person_->canTakeBooks() || days <= 0)
         throw std::logic_error("This person cannot take books!");
     if (!copy_) 
         throw std::invalid_argument("Copy cannot be null!");
     if (!copy_->isAvailable())
         throw std::invalid_argument("Copy is already borrowed!");
+    
+    dueDate_ = startDate_ + std::chrono::hours(24 * days);
+
     copy_->markAsBorrowed();
 }
 
@@ -58,11 +62,9 @@ void Arenda::close()
 bool Arenda::isOverdue() const {
     bool res;
     if (status_ == ArendaStatus::Closed) { res = false; }
-    else 
+    else
     {
-        auto now = std::chrono::system_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::hours>(now - startDate_);
-        res = duration.count() > 24 * DefaultArendaDays;
+        res = std::chrono::system_clock::now() > dueDate_;
     }
     return res;
 }
