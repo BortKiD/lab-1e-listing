@@ -18,6 +18,8 @@ public:
     void changeEmail(Email& newEmail);
     bool canTakeBooks() const;
     int getMaxArendaDays() const;
+    int getMaxActiveArendas() const;
+
 private:
     int id_;
     std::string fullName_;

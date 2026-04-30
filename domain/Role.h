@@ -8,6 +8,7 @@ public:
     virtual std::string getName() const = 0;
     virtual bool canTakeBooks() const;
     virtual int getDefaultArendaDays() const = 0;
+    virtual int getMaxActiveArendas() const;
 };
 
 class ReaderRole : public Role 
@@ -27,6 +28,11 @@ public:
     {
         return 100;
     }
+
+    int getMaxActiveArendas() const override
+    {
+        return 6;
+    }
 };
 
 class LibrarianRole : public Role 
@@ -40,6 +46,11 @@ public:
     int getDefaultArendaDays() const override
     {
         return 180;
+    }
+
+    int getMaxActiveArendas() const override
+    {
+        return 9;
     }
 };
 
@@ -55,6 +66,11 @@ public:
     {
         return 180;
     }
+
+    int getMaxActiveArendas() const override
+    {
+        return 9;
+    }
 };
 
 class GuestRole : public Role 
@@ -68,5 +84,10 @@ public:
     int getDefaultArendaDays() const override
     {
         return 30;
+    }
+
+    int getMaxActiveArendas() const override
+    {
+        return 3;
     }
 };
