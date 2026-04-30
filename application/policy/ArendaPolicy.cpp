@@ -15,3 +15,4 @@ bool DefaultArendaPolicy::canCreateArenda(
     
     return res;
 }
+

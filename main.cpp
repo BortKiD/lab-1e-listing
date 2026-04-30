@@ -12,8 +12,13 @@
 
 int main() {
     auto repository = std::make_shared<InMemoryArendaRepository>();
-    auto policy = std::make_shared<DefaultArendaPolicy>();
-    ArendaService service(repository, policy);
+    
+    auto compositePolicy = std::make_shared<CompositeArendaPolicy>();
+    compositePolicy->addPolicy(std::make_shared<AvailabilityPolicy>());
+    compositePolicy->addPolicy(std::make_shared<MaxActiveArendasPolicy>());
+    compositePolicy->addPolicy(std::make_shared<OverduePolicy>());
+    ArendaService service(repository, compositePolicy);
+
     Email email("shepard@example.com");
     auto person = std::make_shared<Person>(1, 
         "John Shepard", 
