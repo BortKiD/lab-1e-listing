@@ -1,5 +1,6 @@
 #include <memory>
 #include <iostream>
+#include <stdexcept>
 #include "application/ArendaService.h"
 #include "application/policy/ArendaPolicy.h"
 #include "infrastructure/InMemoryArendaRepository.h"
@@ -26,7 +27,7 @@ int main() {
     person->addRole(std::make_shared<ReaderRole>());
 
     std::vector<std::string> authors = {"Терри Пратчет"};
-    auto book = std::make_shared<Book>("Последний континент", ISBN("5-699-12841-7"), authors, 1998);
+    auto book = std::make_shared<Book>("Последний континент", ISBN("ISBN 5-699-12841-7"), authors, 1998);
     auto copy = std::make_shared<Copy>(1, book);
     auto arenda = service.createArenda(person, copy);
 

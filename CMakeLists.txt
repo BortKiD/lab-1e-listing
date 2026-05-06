@@ -66,3 +66,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
         -o build/app.exe
     )
 endif()
+
+if (MSVC)
+    target_compile_options(LibrarySystem PUBLIC /EHa)
+endif()

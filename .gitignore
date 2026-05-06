@@ -1,6 +1,11 @@
 build/
+docs/
 
 listing.txt
 res.txt
 *.docx
 
+all_changes.txt
+all_changes.txt.bak
+diags
+diags_cum
